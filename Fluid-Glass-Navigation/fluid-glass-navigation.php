@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Fluid Glass Navigation
- * Description: A custom glassmorphism navbar widget for Elementor
- * Version: 1.0.0
+ * Description: A custom navbar widget for wordpress
+ * Version: 2.0.0
  * Author: Tebogo L Selepe
  */
 
