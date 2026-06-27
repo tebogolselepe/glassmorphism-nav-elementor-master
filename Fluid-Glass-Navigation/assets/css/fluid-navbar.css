@@ -1,0 +1,269 @@
+.fgn-navbar {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 400;
+}
+
+.fgn-navbar-pill {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(22,22,20,0.45);
+    border: none !important;
+    border-radius: 0;
+    padding: 7px 7px 7px 8px;
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: gap 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+}
+
+.fgn-logo-circle {
+    width: 50px !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 1;
+    max-width: 60px;
+    transition: max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    text-decoration: none;
+}
+
+.fgn-logo-circle svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.fgn-nav-label {
+    color: rgba(220,218,208,0.82);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    font-weight: 400;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 120px;
+    opacity: 1;
+    transition: max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+
+.fgn-navbar.menu-open .fgn-navbar-pill {
+    gap: 0;
+}
+
+.fgn-navbar.menu-open .fgn-logo-circle {
+    max-width: 0;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.fgn-navbar.menu-open .fgn-nav-label {
+    max-width: 0;
+    opacity: 0;
+}
+button#fgnOpenBtn {
+    background: none !important;
+}
+
+.fgn-hamburger-btn {
+    background: none;
+    border: none !important;
+    cursor: pointer;
+    padding: 10px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fgn-hamburger-btn span {
+    display: block;
+    width: 17px;
+    height: 1px;
+    background: rgba(220,218,208,0.72);
+    transform-origin: center;
+    transition: transform 0.35s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.25s ease, background 0.25s ease;
+}
+
+.fgn-hamburger-btn:hover span {
+    background: #fff;
+}
+
+.fgn-hamburger-btn.is-open span:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+    background: rgba(220,218,208,0.9);
+}
+
+.fgn-hamburger-btn.is-open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.fgn-hamburger-btn.is-open span:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+    background: rgba(220,218,208,0.9);
+}
+
+/* ===== Overlay ===== */
+.fgn-navbar-open {
+    position: fixed;
+    inset: 0;
+    z-index: 350;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    background: rgba(10,10,9,0.85);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+.fgn-navbar-open.visible {
+    opacity: 1;
+}
+
+.fgn-navbar-open.visible .fgn-menu-panel-wrap {
+    pointer-events: all;
+}
+
+/* ===== Menu Panel ===== */
+.fgn-menu-panel-wrap {
+    position: absolute;
+    bottom: calc(28px + 48px + 14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    pointer-events: none;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+    opacity: 0;
+}
+
+.fgn-navbar-open.visible .fgn-menu-panel-wrap {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.fgn-menu-panel {
+    background: linear-gradient(160deg, rgba(16,16,14,0.85) 0%, rgba(10,10,9,0.88) 100%);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    width: 220px;
+    padding: 22px 24px 20px;
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* ===== Panel Label ===== */
+.fgn-menu-panel-label {
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    color: rgba(150,148,138,0.5);
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+/* ===== Menu Links ===== */
+.fgn-menu-links {
+    list-style: none;
+    margin-bottom: 18px;
+    padding-left: 0 !important;
+}
+
+.fgn-menu-links li {
+    overflow: hidden;
+}
+
+.fgn-menu-links a {
+    display: block;
+    font-size: 26px;
+    font-weight: 400;
+    color: rgba(228,226,216,0.6);
+    text-decoration: none;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    transform: translateY(100%);
+}
+
+.fgn-menu-links a:hover,
+.fgn-menu-links a.active {
+    color: #fff;
+    padding-left: 4px;
+}
+
+/* ===== Inline Pair ===== */
+.fgn-menu-inline-pair {
+    display: flex;
+    gap: 12px;
+    overflow: hidden;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.07);
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.fgn-menu-inline-pair a {
+    flex: 1 1 0;
+    text-align: start;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+/* ===== Secondary Links ===== */
+.fgn-menu-secondary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px 8px;
+    margin-bottom: 18px;
+    padding-top: 14px;
+    border-top: 0.5px solid rgba(255,255,255,0.07);
+    opacity: 0;
+}
+
+.fgn-menu-secondary span,
+.fgn-menu-secondary a {
+    font-size: 10px;
+    color: rgba(140,138,128,0.75);
+    font-weight: 300;
+    text-decoration: none;
+    line-height: 1.9;
+    transition: color 0.3s ease;
+}
+
+.fgn-menu-secondary a:hover {
+    color: rgba(200,198,190,0.9);
+}
+
+/* ===== CTA Button ===== */
+.fgn-menu-cta {
+    width: 100%;
+    background: #181816;
+    border: 0.5px solid rgba(255,255,255,0.18);
+    color: rgba(220,218,208,0.85);
+    font-size: 9.5px;
+    letter-spacing: 0.15em;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    padding: 13px 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.fgn-menu-cta:hover {
+    background: #242420;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
